@@ -149,5 +149,10 @@ public class Main {
         }
         return false;
 
+        /*
+        or...
+        return input.equals(ReverseString(input));
+         */
+
     }
 }
