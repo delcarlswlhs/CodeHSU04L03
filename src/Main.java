@@ -80,19 +80,29 @@ public class Main {
      * @return true if target found, false otherwise
      */
     public static boolean ContainsSubstring(String input, String target){
-        int length = input.length();
+        int inputLength = input.length();
         int targetLength = target.length();
-        for(int a=0; a<length; a++){
-            for(int b=0; b<targetLength;b++){
-                if(input.substring, target.substring(b, b + 1))){
-                    if(input.substring(a,a+1).equals(target.substring(b,b+1))
+        int maxLength = inputLength - targetLength;
+        for(int a=0; a<= maxLength; a++){
+                String currentPortion = input.substring(a, a + targetLength);
+                if(currentPortion.equals(target)){
+                    return true;
             }
 
-
             }
-        }
-
         return false;
+
+        /*
+        Second method:
+        return input.contains(target);
+        or
+        return input.toLowerCase().contains(target.toLowerCase()); //if not case sensitive
+         */
+
+        /*
+        Third method:
+        return input.indexOf(target) >= 0;
+         */
     }
 
     /**
@@ -100,18 +110,44 @@ public class Main {
      * @param input String
      * @return reversed input String
      */
-    public static String ReverseString(String input){
-
-        return "";
+    public static String ReverseString(String input) {
+        //find length
+        int inputLength = input.length();
+        //create the new empty String
+        String newWord = "";
+        //make a for loop that runs through each letter backwards
+        for(int i = inputLength-1; i>=0; i--){
+            //make substring of one character at i and concatenate
+            String inputCharacter = input.substring(i, i+1);
+            newWord += inputCharacter;
+        }
+        return newWord;
     }
+
+
+
 
     /**
      * Determines if a given string is palindrome
      * @param input String
      * @return true if given string is a palindrome, false otherwise
      */
-    public static boolean PalindromeChecker(String input){
 
+    public static boolean PalindromeChecker(String input){
+        //find length of input
+        int inputLength = input.length();
+        //create a new empty String
+        String newWord = "";
+        //make a for loop that runs through each letter backwards
+        for(int i = inputLength-1; i>=0; i--){
+            String inputChar = input.substring(i, i+1);
+            newWord += inputChar;
+            //make an if statement that returns true if the new word equals the old word
+            if(newWord.equals(input)){
+                return true;
+            }
+        }
         return false;
+
     }
 }
